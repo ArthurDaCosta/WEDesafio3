@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 use GuzzleHttp\Client;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function login()
+    public function login(Request $request)
     {
         if(session()->has('loggedIn')) {
             return redirect()->route('loja.index');
@@ -18,8 +19,8 @@ class UserController extends Controller
         try {
             $response = $client->post($apiUrl, [
                'body' => json_encode([
-                     'email' => $_POST['email'],
-                     'cpf' => $_POST['cpf']
+                     'email' => $request->email,
+                     'cpf' => $request->cpf
                ])
             ]);
 
@@ -45,7 +46,7 @@ class UserController extends Controller
 
         session()->forget('loggedIn');
 
-        return redirect()->route('login.index');
+        return redirect()->route('loja.index');
     }
 
 }

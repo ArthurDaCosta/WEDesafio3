@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCarrinhoTable extends Migration
+class CreateCarrinhoPessoaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class CreateCarrinhoTable extends Migration
     public function up()
     {
         Schema::create('carrinhoPessoa', function (Blueprint $table) {
-            $table->unique('idpessoa');
-            $table->integer('items');
+            $table->string('idpessoa');
+            $table->text('items');
             $table->timestamps();
         });
     }

@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
 
 class ProdutosController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $client = new Client();
 
@@ -16,13 +16,14 @@ class ProdutosController extends Controller
         try {
             $response = $client->get($apiUrl, [
                'body' => json_encode([
-                     'dscproduto' => $_POST['dscproduto'] ?? '',
-                     'modalidade' => $_POST['modalidade'] ?? '',
-                     'pagina' => $_POST['pagina'] ?? 1
+                     'dscproduto' => $request->dscproduto ?? '',
+                     'modalidade' => $request->modalidade ?? '',
+                     'pagina' => $request->pagina ?? 1,
                ]),
             ]);
 
             $data = json_decode($response->getBody(), true);
+            $data = $data['result'];
 
             return view('loja.index', compact('data'));
         } catch (\Exception $e) {

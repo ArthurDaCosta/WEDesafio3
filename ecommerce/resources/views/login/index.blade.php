@@ -187,7 +187,7 @@
                             <input type="text" id="email" name="email" value="" placeholder="Insira seu E-Mail" required />
                         </div>
                         <div style="margin-bottom:1.5vh;" class="form-group">
-                            <input type="text" id="cpf" name="cpf" value="" placeholder="Insira seu CPF" required />
+                            <input type="password" id="cpf" name="cpf" value="" placeholder="Insira seu CPF" required />
                         </div>
                         
                         <input type="submit" value="LOGIN" class="botao" />
