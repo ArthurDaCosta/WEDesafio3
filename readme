@@ -1,0 +1,38 @@
+composer create-project --prefer-dist laravel/laravel projetoLaravel
+
+
+passo a passo
+
+cd projetoLaravel
+
+php artisan migrate
+php artisan serve     inicia server
+
+php artisan migrate:refresh
+
+root@1d32f03518fa:/var/www/projetoLaravel# php artisan make:model Book -m 
+cria arquivos model e migration
+
+php artisan db:seed --class=BooksTableSeeder       faz seeder inserir dados
+
+testes:
+POST
+
+http://localhost:8000/api/books
+
+{
+  "title": "Novo Livro",
+  "author": "Autor",
+  "release_date": "2024-01-01",
+  "genre": "Fiction",
+  "pages": 123
+}
+
+GET
+
+http://localhost:8000/api/books/search
+
+{
+  "author": "George Orwell"
+}
+
