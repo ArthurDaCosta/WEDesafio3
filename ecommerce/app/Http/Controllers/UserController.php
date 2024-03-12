@@ -30,7 +30,8 @@ class UserController extends Controller
                 return redirect()->route('loja.index');
             }
 
-            return view('login.index', compact('data'));
+            session('erro', 'Usuário ou senha inválidos');
+            return view('login.index');
         } catch (\Exception $e) {
             return view('login.index', ['error' => $e->getMessage()]);
         }

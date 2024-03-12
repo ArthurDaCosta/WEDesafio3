@@ -182,7 +182,7 @@
                         Faça login com seu<br> <span style="color:#1839de; font-weight: 600; ">E-Mail</span> e <span style="color:#1839de; font-weight: 600; ">CPF</span>
                     </div>
 
-                    <form id= formulario method="POST" action="{{ route('login.verifyLogin') }}">
+                    <form id= formulario method="POST" action="{{ route('login.login') }}">
                         @csrf
                         <div style="margin-bottom:.8vh;">
                             <input type="text" id="email" name="email" value="" placeholder="Insira seu E-Mail" required />
