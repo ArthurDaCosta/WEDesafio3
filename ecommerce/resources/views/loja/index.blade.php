@@ -1,8 +1,8 @@
 <?php
 
- if(isset($error)){
+if(isset($error)){
     var_dump($error);
- }
+}
  
 ?>
 
@@ -54,7 +54,7 @@
         <section id="primeira">
             <div class="caixa">
                 <?php
-                foreach ($data as $produto) {
+                foreach ($data ?? [] as $produto) {
                     ?>
                     <div class="produto" id="produto-<?=$produto['idproduto']?>">
                         <div class="imagem">

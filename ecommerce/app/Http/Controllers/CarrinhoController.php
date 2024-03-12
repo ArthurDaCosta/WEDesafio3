@@ -30,6 +30,12 @@ class CarrinhoController extends Controller
             return redirect()->route('login.index');
         }
 
+        $request->validate([
+            'idproduto' => 'required',
+            'quantidade' => 'required|numeric|min:1',
+            'preco' => 'required|numeric|min:0'
+        ]); 
+
         $produto = New CarrinhoItem([
             'idproduto' => $request->idproduto,
             'imagem' => $request->imagem,
@@ -38,16 +44,16 @@ class CarrinhoController extends Controller
             'preco' => $request->preco
 
         ]);
-        
+
         try {
             if(DB::table('carrinhoPessoa')->where('idpessoa', session('loggedIn'))->exists()) {
                 $carrinho = DB::table('carrinhoPessoa')->where('idpessoa', session('loggedIn'))->first();
                 $carrinho->items = json_decode($carrinho->items, true);
 
                 if(array_search($produto->idproduto, array_column($carrinho->items, 'idproduto')) !== false) {
-                    foreach($carrinho->items as $item) {
-                        if($item->idproduto == $produto->idproduto) {
-                            $item->quantidade += $produto->quantidade;
+                    foreach($carrinho->items as &$item) {
+                        if($item['idproduto'] == $produto->idproduto) {
+                            $item['quantidade'] += $produto->quantidade;
                         }
                     }
                 } else {
@@ -59,11 +65,11 @@ class CarrinhoController extends Controller
             } else {
                 DB::table('carrinhoPessoa')->insert([
                     'idpessoa' => session('loggedIn') ?? "Undefined",
-                    'items' => json_encode($produto)
+                    'items' => json_encode([$produto])
                 ]);
             }
         } catch (\Exception $e) {
-            return view('loja.index', ['error' => $e->getMessage()]);
+            return view('error', ['error' => $e->getMessage()]);
         }
 
         return redirect()->route('loja.index');
@@ -110,13 +116,18 @@ class CarrinhoController extends Controller
         ]);
 
         $id = $request->idproduto;
-        $carrinho = DB::table('carrinhoPessoa')->where('idpessoa', session('loggedIn'))->first();
-        $carrinho->items = json_decode($carrinho->items, true);
-        $carrinho->items = array_filter($carrinho->items, function($item) use ($id) {
-            return $item->idproduto != $id;
-        });
-        $carrinho->items = json_encode($carrinho->items);
-        $carrinho->save();
+
+        try {
+            $carrinho = DB::table('carrinhoPessoa')->where('idpessoa', session('loggedIn'))->first();
+            $carrinho->items = json_decode($carrinho->items, true);
+            $carrinho->items = array_filter($carrinho->items, function($item) use ($id) {
+                return $item->idproduto != $id;
+            });
+            $carrinho->items = json_encode($carrinho->items);
+            $carrinho->save();
+        } catch (\Exception $e) {
+            return view('loja.index', ['error' => $e->getMessage()]);
+        }
 
         return redirect()->route('carrinho.index');
     }
@@ -127,7 +138,11 @@ class CarrinhoController extends Controller
             return redirect()->route('login.index');
         }
 
-        DB::table('carrinhoPessoa')->where('idpessoa', session('id'))->first()->delete();
+        try {
+            DB::table('carrinhoPessoa')->where('idpessoa', session('id'))->first()->delete();
+        } catch (\Exception $e) {
+            return view('loja.index', ['error' => $e->getMessage()]);
+        }
 
         return redirect()->route('carrinho.index');
     }
