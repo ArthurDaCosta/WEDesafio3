@@ -1,15 +1,10 @@
 <?php
 
- if(isset($data)){
-    var_dump($data);
- }
- 
  if(isset($error)){
     var_dump($error);
  }
  
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -17,22 +12,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paghtml</title>
-
     <link rel="stylesheet" href="{{ asset('css/loja.css') }}">
-
 </head>
 <body>
     <main>
         <section id="cabeca">
             <img src="{{URL::asset('/img/pngegg.png')}}" alt="logo" id="logoacabeca">
-
             <div id="alinhadireita">
-
                 <div id="barra-pesquisa">
                     <input type="text" placeholder="Pesquisar...">
                     <button type="submit" id="dscproduto">&#128269;</button>
                 </div>
-
                 <div id="caixaLogin">
                 <?php
                 if (session('loggedIn')) {
@@ -51,7 +41,6 @@
                 }
                 ?>
                 </div>
-
                 <button id="botao-menu">Categorias</button>
                 <nav id="menu-retratil">
                     <ul>
@@ -60,10 +49,8 @@
                         <li><a href="#">Item de menu 3</a></li>
                     </ul>
                 </nav>
-
             </div>
         </section>
-
         <section id="primeira">
             <div class="caixa">
                 <?php
@@ -79,6 +66,9 @@
                             <form id="formulario" method="POST" action="{{ route('carrinho.store') }}">
                                 @csrf
                                 <input type="hidden" name="idproduto" value="<?= $produto['idproduto'] ?>" />
+                                <input type="hidden" name="imagem" value="<?= $produto['imagem'] ?>"/> 
+                                <input type="hidden" name="dscproduto" value="<?= $produto['dscproduto'] ?>"/> 
+                                <input type="hidden" name="preco" value="<?= $produto['preco'] ?>"/> 
                                 <input type="hidden" name="quantidade" value="1"/>
                                 <input type="submit" value="Add ao Carrinho +" class="botao-add-carrinho" />
                             </form>
@@ -87,7 +77,6 @@
                     <?php
                 }
                 ?>
-                
             </div>
             <div id="paginacao">
                 <button>&lt;&lt;</button>
@@ -95,7 +84,6 @@
                 <select>
                     <option value="1">1</option>
                     <option value="2">2</option>
-                        <!-- Adicione mais opções conforme necessário -->
                 </select>
                 <button>&gt;</button>
                 <button>&gt;&gt;</button>  
@@ -104,8 +92,6 @@
         </section>
 
     </main>
-    
         <script src="{{ asset('js/loja.js') }}"></script>
-    
 </body>
 </html>

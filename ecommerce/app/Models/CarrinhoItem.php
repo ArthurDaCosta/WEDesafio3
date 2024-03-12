@@ -9,6 +9,9 @@ class CarrinhoItem extends Model
 {
     protected $fillable = [
         'idproduto',
+        'imagem',
+        'dscproduto',
+        'preco',
         'quantidade'
     ];
 

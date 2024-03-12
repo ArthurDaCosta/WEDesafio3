@@ -32,14 +32,18 @@ class CarrinhoController extends Controller
 
         $produto = New CarrinhoItem([
             'idproduto' => $request->idproduto,
-            'quantidade' => $request->quantidade
+            'imagem' => $request->imagem,
+            'dscproduto' => $request->dscproduto,
+            'quantidade' => $request->quantidade,
+            'preco' => $request->preco
+
         ]);
         
         try {
             if(DB::table('carrinhoPessoa')->where('idpessoa', session('loggedIn'))->exists()) {
                 $carrinho = DB::table('carrinhoPessoa')->where('idpessoa', session('loggedIn'))->first();
                 $carrinho->items = json_decode($carrinho->items, true);
-                
+
                 if(array_search($produto->idproduto, array_column($carrinho->items, 'idproduto')) !== false) {
                     foreach($carrinho->items as $item) {
                         if($item->idproduto == $produto->idproduto) {

@@ -21,11 +21,3 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/lunar/login', [UserController::class, 'login'])->name('login.login');
-Route::get('/lunar/logout', [UserController::class, 'logout'])->name('login.logout');
-Route::get('/lunar/carrinho', [CarrinhoController::class, 'index'])->name('carrinho.index');
-Route::post('/lunar/carrinho', [CarrinhoController::class, 'store'])->name('carrinho.store');
-Route::put('/lunar/carrinho', [CarrinhoController::class, 'update'])->name('carrinho.update');
-Route::delete('/lunar/carrinho/id', [CarrinhoController::class, 'delete'])->name('carrinho.delete');
-Route::delete('/lunar/carrinho', [CarrinhoController::class, 'clear'])->name('carrinho.clear'); 
-
