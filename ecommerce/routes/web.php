@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 
 Route::get('/lunar/loja', [ProdutosController::class, 'index'])->name('loja.index');
-Route::view('/lunar/login', 'login.index')->name('login.index');
+Route::get('/lunar/login', [UserController::class, 'login'])->name('login.index');
 Route::post('/lunar/login', [UserController::class, 'login'])->name('login.login');
 Route::get('/lunar/logout', [UserController::class, 'logout'])->name('login.logout');
 Route::get('/lunar/carrinho', [CarrinhoController::class, 'index'])->name('carrinho.index');

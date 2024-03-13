@@ -12,31 +12,35 @@ class UserController extends Controller
             return redirect()->route('loja.index');
         }
 
-        $client = new Client();
+        if($request->isMethod('post')) {
+            $client = new Client();
 
-        $apiUrl = "https://ah.we.imply.com/desafio3/login";
+            $apiUrl = "https://ah.we.imply.com/desafio3/login";
 
-        try {
-            $response = $client->post($apiUrl, [
-               'body' => json_encode([
-                     'email' => $request->email,
-                     'cpf' => $request->cpf
-               ])
-            ]);
+            try {
+                $response = $client->post($apiUrl, [
+                    'body' => json_encode([
+                            'email' => $request->post('email'),
+                            'cpf' => $request->post('cpf')
+                    ])
+                ]);
 
-            $data = json_decode($response->getBody(), true);
+                $data = json_decode($response->getBody(), true);
 
-            if (isset($data['result']['idpessoa'])) {
-                session(['loggedIn' => $data['result']['idpessoa']]);
-                session(['nome' => $data['result']['nome']]);
-                return redirect()->route('loja.index');
+                if (isset($data['result']['idpessoa'])) {
+                    session(['loggedIn' => $data['result']['idpessoa']]);
+                    session(['nome' => $data['result']['nome']]);
+                    return redirect()->route('loja.index');
+                }
+
+                session(['error' => 'Usuário ou senha inválidos']);
+                return view('login.index');
+            } catch (\Exception $e) {
+                return view('error', ['error' => $e->getMessage()]);
             }
-
-            session(['error' => 'Usuário ou senha inválidos']);
-            return view('login.index');
-        } catch (\Exception $e) {
-            return view('error', ['error' => $e->getMessage()]);
         }
+
+        return view('login.index');
     }
 
     public function logout()

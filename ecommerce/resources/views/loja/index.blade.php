@@ -9,10 +9,11 @@
 <body>
     <main>
         <section id="cabeca">
-            <img src="{{URL::asset('/img/pngegg.png')}}" alt="logo" id="logoacabeca">
+            <a href="{{ route('loja.index') }}" id="lojaLink"><img src="{{URL::asset('/img/pngegg.png')}}" alt="logo" id="logoacabeca"></a>
             <div id="alinhadireita">
                 <div id="barra-pesquisa">
                     <form id="formulario" method="GET" action="{{ route('loja.index') }}">
+                        <input type="hidden" name="modalidade" value="<?= $_GET['modalidade'] ?? '' ?>" />
                         <input type="text" name="dscproduto" placeholder="Pesquisar...">
                         <button type="submit">&#128269;</button>
                     </form>
@@ -36,13 +37,15 @@
                 ?>
                 </div>
                 <button id="botao-menu">Categorias</button>
-                <nav id="menu-retratil">
+                <form id="menu-retratil" method="GET" action="{{ route('loja.index') }}">
                     <ul>
-                        <li><a href="#">Item de menu 1</a></li>
-                        <li><a href="#">Item de menu 2</a></li>
-                        <li><a href="#">Item de menu 3</a></li>
+                        <button type="submit" name='modalidade' value="">Todos</button>
+                        <button type="submit" name='modalidade' value="1">Ingressos</button>
+                        <button type="submit" name='modalidade' value="2">Consumíveis</button>
+                        <button type="submit" name='modalidade' value="3">Estacionamento</button>
+                        <button type="submit" name='modalidade' value="4">Complemento</button>                        
                     </ul>
-                </nav>
+                </form>
             </div>
         </section>
         <section id="primeira">
@@ -74,19 +77,21 @@
             </div>
             <div id="paginacao">
                 <form id="form" method="GET" action="{{ route('loja.index') }}">
-                    <button>&lt;&lt;</button>
-                    <button onclick="selectNext()">&lt;</button>
-                    <select name="pagina" onchange="this.form.submit()">
+                    <input type="hidden" name="dscproduto" value="<?= $_GET['dscproduto'] ?? '' ?>" />
+                    <input type="hidden" name="modalidade" value="<?= $_GET['modalidade'] ?? '' ?>" />
+                    <button onclick="selectFirst()">&lt;&lt;</button>
+                    <button onclick="selectPrevious()">&lt;</button>
+                    <select name="pagina" id="pagina" onchange="submit()">
                         <?php
                         for ($i = 1; $i <= $data['totalPaginas']; $i++) {
                             ?>
-                            <option value="<?= $i ?>" <?= $i == (session('pagina') ?? 1)  ? 'selected' : '' ?>><?= $i ?></option>
+                            <option value="<?= $i ?>" <?= $i == ($_GET['pagina'] ?? 1)  ? 'selected' : '' ?>><?= $i ?></option>
                             <?php
                         }
                         ?>
                     </select>
-                    <button onclick="selectPrior()">&gt;</button>
-                    <button>&gt;&gt;</button>  
+                    <button onclick="selectNext()">&gt;</button>
+                    <button onclick="selectLast()">&gt;&gt;</button>  
                 </form>
             </div>
 

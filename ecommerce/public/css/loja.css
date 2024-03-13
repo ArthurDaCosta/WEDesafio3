@@ -18,9 +18,15 @@
     background-size: cover;
     position: relative;
 }
-#logoacabeca{
 
+#lojaLink{
+    height: 100%;
 }
+
+#logoacabeca{
+    height: 100%;
+}
+
 #alinhadireita{
     display: flex;
     align-items: center;
@@ -49,6 +55,8 @@
 
 }
 #menu-retratil{
+    display: flex;
+    flex-direction: column;
     position: absolute;
     top: 100%; /* Posiciona o menu abaixo do cabeçalho */
     right: 0;

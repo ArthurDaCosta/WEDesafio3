@@ -16,14 +16,35 @@ menu.style.display = "none";
 });
 /*--------------------------------------------------------------------------------botões pagina------------------*/
 function selectNext(){
-  var select = document.getElementById('form');
-  select.selectedIndex++;
+  var select = document.getElementById("pagina");
+  var value = select.options[select.selectedIndex].value;
+  var next = parseInt(value) + 1;
+  if(next > select.options[select.options.length - 1].value){
+      next = select.options[select.options.length - 1].value;
+  }
+  select.value = next;
+  selectChange();
 }
 
-function selectPrior(){
-    var select = document.getElementById('form');
-    select.selectedIndex--;
+function selectPrevious(){
+  var select = document.getElementById("pagina");
+  var value = select.options[select.selectedIndex].value;
+  var previous = parseInt(value) - 1;
+  if(previous < 1){
+    previous = 1;
+  }
+  select.value = previous;
+  selectChange();
 }
 
+function selectFirst(){
+  var select = document.getElementById("pagina");
+  select.value = 1;
+  selectChange();
+}
 
-
+function selectLast(){
+  var select = document.getElementById("pagina");
+  select.value = select.options[select.options.length - 1].value;
+  selectChange();
+}
