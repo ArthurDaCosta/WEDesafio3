@@ -1,11 +1,3 @@
-<?php
-
-if(isset($error)){
-    var_dump($error);
-}
- 
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -20,14 +12,16 @@ if(isset($error)){
             <img src="{{URL::asset('/img/pngegg.png')}}" alt="logo" id="logoacabeca">
             <div id="alinhadireita">
                 <div id="barra-pesquisa">
-                    <input type="text" placeholder="Pesquisar...">
-                    <button type="submit" id="dscproduto">&#128269;</button>
+                    <form id="formulario" method="GET" action="{{ route('loja.index') }}">
+                        <input type="text" name="dscproduto" placeholder="Pesquisar...">
+                        <button type="submit">&#128269;</button>
+                    </form>
                 </div>
                 <div id="caixaLogin">
                 <?php
                 if (session('loggedIn')) {
                     ?>
-                    <p id="bemVindo">Bem vindo <?= session('loggedIn') ?> </p>
+                    <p id="bemVindo">Bem vindo <?= session('nome') ?> </p>
                     <form id="formulario" method="GET" action="{{ route('login.logout') }}">
                         <input type="submit" value="Logout" class="botao" />
                     </form>
@@ -54,7 +48,7 @@ if(isset($error)){
         <section id="primeira">
             <div class="caixa">
                 <?php
-                foreach ($data ?? [] as $produto) {
+                foreach ($data['resultado'] ?? [] as $produto) {
                     ?>
                     <div class="produto" id="produto-<?=$produto['idproduto']?>">
                         <div class="imagem">
@@ -79,14 +73,21 @@ if(isset($error)){
                 ?>
             </div>
             <div id="paginacao">
-                <button>&lt;&lt;</button>
-                <button>&lt;</button>
-                <select>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                </select>
-                <button>&gt;</button>
-                <button>&gt;&gt;</button>  
+                <form id="form" method="GET" action="{{ route('loja.index') }}">
+                    <button>&lt;&lt;</button>
+                    <button onclick="selectNext()">&lt;</button>
+                    <select name="pagina" onchange="this.form.submit()">
+                        <?php
+                        for ($i = 1; $i <= $data['totalPaginas']; $i++) {
+                            ?>
+                            <option value="<?= $i ?>" <?= $i == (session('pagina') ?? 1)  ? 'selected' : '' ?>><?= $i ?></option>
+                            <?php
+                        }
+                        ?>
+                    </select>
+                    <button onclick="selectPrior()">&gt;</button>
+                    <button>&gt;&gt;</button>  
+                </form>
             </div>
 
         </section>

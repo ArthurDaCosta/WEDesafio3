@@ -14,3 +14,16 @@ menu.style.display = "block";
 menu.style.display = "none";
 }
 });
+/*--------------------------------------------------------------------------------botões pagina------------------*/
+function selectNext(){
+  var select = document.getElementById('form');
+  select.selectedIndex++;
+}
+
+function selectPrior(){
+    var select = document.getElementById('form');
+    select.selectedIndex--;
+}
+
+
+

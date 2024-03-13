@@ -17,7 +17,7 @@ class CarrinhoController extends Controller
         try {
             $carrinho = DB::table('carrinhoPessoa')->where('idpessoa', session('id'))->first();
         } catch (\Exception $e) {
-            return view('loja.index', ['error' => $e->getMessage()]);
+            return view('error', ['error' => $e->getMessage()]);
         }
 
         $carrinho->items = json_decode($carrinho->items, true);
@@ -90,7 +90,7 @@ class CarrinhoController extends Controller
         try {
             $carrinho = DB::table('carrinhoPessoa')->where('idpessoa', session('loggedIn'))->first();
         } catch (\Exception $e) {
-            return view('loja.index', ['error' => $e->getMessage()]);
+            return view('error', ['error' => $e->getMessage()]);
         }
 
         $carrinho->items = json_decode($carrinho->items, true);
@@ -126,7 +126,7 @@ class CarrinhoController extends Controller
             $carrinho->items = json_encode($carrinho->items);
             $carrinho->save();
         } catch (\Exception $e) {
-            return view('loja.index', ['error' => $e->getMessage()]);
+            return view('error', ['error' => $e->getMessage()]);
         }
 
         return redirect()->route('carrinho.index');
@@ -141,7 +141,7 @@ class CarrinhoController extends Controller
         try {
             DB::table('carrinhoPessoa')->where('idpessoa', session('id'))->first()->delete();
         } catch (\Exception $e) {
-            return view('loja.index', ['error' => $e->getMessage()]);
+            return view('error', ['error' => $e->getMessage()]);
         }
 
         return redirect()->route('carrinho.index');

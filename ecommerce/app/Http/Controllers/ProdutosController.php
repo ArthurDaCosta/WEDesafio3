@@ -14,7 +14,7 @@ class ProdutosController extends Controller
         $apiUrl = "https://ah.we.imply.com/desafio3/produtos";
 
         try {
-            $response = $client->get($apiUrl, [
+            $response = $client->post($apiUrl, [
                'body' => json_encode([
                      'dscproduto' => $request->dscproduto ?? '',
                      'modalidade' => $request->modalidade ?? '',
@@ -27,7 +27,31 @@ class ProdutosController extends Controller
 
             return view('loja.index', compact('data'));
         } catch (\Exception $e) {
-            return view('login.index', ['error' => $e->getMessage()]);
+            return view('error', ['error' => $e->getMessage()]);
         }
     }   
+
+    public function indexFilter(Request $request)
+    {
+        $client = new Client();
+
+        $apiUrl = "https://ah.we.imply.com/desafio3/produtos";
+
+        try {
+            $response = $client->post($apiUrl, [
+               'body' => json_encode([
+                     'dscproduto' => $request->dscproduto ?? '',
+                     'modalidade' => $request->modalidade ?? '',
+                     'pagina' => $request->pagina ?? 1,
+               ]),
+            ]);
+
+            $data = json_decode($response->getBody(), true);
+            $data = $data['result'];
+
+            return redirect()->back()->with(compact('$data'));
+        } catch (\Exception $e) {
+            return view('error', ['error' => $e->getMessage()]);
+        }
+    }
 }

@@ -28,13 +28,14 @@ class UserController extends Controller
 
             if (isset($data['result']['idpessoa'])) {
                 session(['loggedIn' => $data['result']['idpessoa']]);
+                session(['nome' => $data['result']['nome']]);
                 return redirect()->route('loja.index');
             }
 
             session('erro', 'Usuário ou senha inválidos');
             return view('login.index');
         } catch (\Exception $e) {
-            return view('login.index', ['error' => $e->getMessage()]);
+            return view('error', ['error' => $e->getMessage()]);
         }
     }
 
@@ -44,7 +45,7 @@ class UserController extends Controller
             return redirect()->route('login.index');
         }
 
-        session()->forget('loggedIn');
+        session()->forget('loggedIn', 'nome');
 
         return redirect()->route('loja.index');
     }
