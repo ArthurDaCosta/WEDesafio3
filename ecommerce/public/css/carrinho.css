@@ -18,8 +18,11 @@
     background-size: cover;
     position: relative;
 }
+#lojaLink{
+    height: 100%;
+}
 #logoacabeca{
-
+    height: 100%;
 }
 #alinhadireita{
     display: flex;
@@ -94,6 +97,8 @@
 }
 
 .botoesPagamento{
+    text-decoration: none;
+    text-align: center;
     color: white;
     font-size: 3vh;
     padding: 1.6vh;

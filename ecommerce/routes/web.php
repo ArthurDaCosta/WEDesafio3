@@ -28,4 +28,4 @@ Route::get('/lunar/carrinho', [CarrinhoController::class, 'index'])->name('carri
 Route::post('/lunar/carrinho', [CarrinhoController::class, 'store'])->name('carrinho.store');
 Route::put('/lunar/carrinho', [CarrinhoController::class, 'update'])->name('carrinho.update');
 Route::delete('/lunar/carrinho/id', [CarrinhoController::class, 'delete'])->name('carrinho.delete');
-Route::delete('/lunar/carrinho', [CarrinhoController::class, 'clear'])->name('carrinho.clear'); 
+Route::get('/lunar/carrinho/clear', [CarrinhoController::class, 'clear'])->name('carrinho.clear'); 
