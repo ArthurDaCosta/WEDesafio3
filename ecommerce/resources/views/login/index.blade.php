@@ -25,6 +25,16 @@
                     <div id="textoa">
                         Faça login com seu<br> <span style="color:#1839de; font-weight: 600; ">E-Mail</span> e <span style="color:#1839de; font-weight: 600; ">CPF</span>
                     </div>
+                    <?php
+                    if(!empty(session('error'))){
+                        ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?= session('error') ?>
+                        </div>
+                        <?php
+                        session()->forget('error');
+                    }
+                    ?>
 
                     <form id= formulario method="POST" action="{{ route('login.login') }}">
                         @csrf
