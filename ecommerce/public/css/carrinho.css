@@ -1,0 +1,236 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: roboto;
+    
+}
+/*---------------------------------------------------------------------------------------------*/
+.bloco{
+
+}
+#cabeca{
+    display: flex;
+    border:1px solid rgb(0, 255, 229);
+    justify-content: space-between;
+    height: 12vh;
+    background-image: url('https://tm.ibxk.com.br/2016/02/15/15191853192732.jpg?ims=1280x480');
+    background-size: cover;
+    position: relative;
+}
+#logoacabeca{
+
+}
+#alinhadireita{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: flex-end;
+
+    border:1px solid rgb(4, 126, 0);
+    width: 70%;
+    
+    
+}
+#barra-pesquisa{
+    margin-right: 10%;
+
+}
+#caixaLogin{
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+}
+#bemVindo{
+    color: white;
+}
+#botao-menu{
+    margin-right: 10%;
+
+}
+#menu-retratil{
+    position: absolute;
+    top: 100%; /* Posiciona o menu abaixo do cabeçalho */
+    right: 0;
+    padding: 5%;
+    display: none;
+    backdrop-filter: saturate(100%) blur(30px);
+}
+
+
+#primeira{
+    display: flex;
+    min-height: 100vh;
+    background: black;
+    justify-content: center;
+    background-image: url('https://s3.1app.com.br/master/project_5945/5eEsy3Ca9FXh06oK7e7qvnzT71DkOdL1.jpg');
+    background-size: contain;
+}
+
+.caixa{
+    display: flex;
+    flex-direction: column;
+    
+    width: 70%;
+    margin: 2vw 2vw 2vw;   
+}
+.caixaPagamento{
+    display: flex;
+    flex-direction: column;
+
+    color: white;
+    width: 30%;
+    height: 100vh;
+    
+    padding: 3%;
+    background-image: linear-gradient(to bottom, rgba(0, 179, 255, 0.2), rgba(0, 0, 255, 0)); 
+    backdrop-filter: saturate(0%) blur(6px);
+    border-radius: 10px;
+    margin: 2vw 2vw 2vw; 
+}
+#listagem{
+    max-height: 300px; 
+    overflow-y: scroll;      
+}
+
+.botoesPagamento{
+    color: white;
+    font-size: 3vh;
+    padding: 1.6vh;
+    margin-top: 7%;
+    border:1px solid #1c9fff;
+    border-radius: .6vh;
+
+    background: -webkit-gradient(linear, left top, right top, color-stop(5%, #110c5e), color-stop(56%, #1c9fff), to(#cbf6ff));
+    background: -o-linear-gradient(60deg, #110c5e 5%, #1c9fff 56%, #cbf6ff);
+
+    box-shadow: 0px 0px 50px 10px #029aff86;
+
+
+    background: linear-gradient(30deg, #110c5e 5%, #1c9fff 66%, #cbf6ff);
+    background-size: 100% 100%;
+
+}
+#botaoPagar{
+    animation: pulse 1.5s infinite;
+    -webkit-animation: pulse 1.5s infinite;
+}
+@-webkit-keyframes pulse { 
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(2, 141, 255, 0.7);
+  }
+  70% {
+      -webkit-box-shadow: 0 0 0 1.5vh rgba(61,149,214, 0);
+  }
+  100% {
+      -webkit-box-shadow: 0 0 0 0 rgba(61,149,214, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(2, 141, 255, 0.7);
+    box-shadow: 0 0 0 0 rgba(2, 141, 255, 0.7);
+  }
+  70% {
+      -moz-box-shadow: 0 0 0 1.5vh rgba(61,149,214, 0);
+      box-shadow: 0 0 0 1.5vh rgba(61,149,214, 0);
+  }
+  100% {
+      -moz-box-shadow: 0 0 0 0 rgba(61,149,214, 0);
+      box-shadow: 0 0 0 0 rgba(61,149,214, 0);
+  }}
+
+
+.produto{
+    display: flex;
+    align-items: center;
+    /*border:1px solid rgb(81, 255, 0);*/
+    height: 12vw; 
+    margin:0.5%;
+    border-radius: 10px;
+
+    
+    background-image: linear-gradient(to right, rgba(0, 179, 255, 0.2), rgba(0, 0, 255, 0)); 
+    backdrop-filter: saturate(0%) blur(6px);
+}
+.imagem{
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    height: 100%;
+ 
+}
+.imagem img {
+    max-width: 100%; 
+    height: auto;
+    border-radius: 10px 10px 0 0; 
+    border:1px solid rgb(0, 255, 247);
+}
+
+.informacoes {
+    color: white;
+    padding: 10px;
+}
+
+#caixaquantidade{
+    border:1px solid red;
+}
+#quantidadeAtual{
+    width: 40%;
+}
+.maismenos{
+    width: 6%;
+}
+
+
+
+#caixavidro{
+    display: flex;
+    flex-direction: column;
+    font-size: 4.7vh;
+    width: 80%;
+    height: 90%;
+    border-radius: 30px;
+    align-items: center;
+    justify-content:space-around;
+    padding: 2vh 1vw 3vh;
+    
+
+    backdrop-filter: saturate(100%) blur(30px);
+}
+#direitaPrimeira{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border:1px solid rgb(55, 0, 255);
+    margin: 0px;
+    min-height: 100vh;
+    min-width: 50%;
+}
+
+
+        @media screen and (orientation: portrait)/*----------------------------------------------ajustes mobile-------------------------------------*/
+        {
+        #primeira{ /*height:200vh;*/height: 150vh;}
+
+        .caixa{flex-direction: column;}
+
+        #caixavidro{width: 96%;}
+
+        #direitaPrimeira{min-height: 50vh;}
+        
+        .botao{}
+
+
+        }
+
+/*------------------------------------------------------*/
+#paginacao{
+    display: flex;
+    justify-content: center;
+
+}
+
+
+/*---------------------------------------------------------------------------------------------*/
