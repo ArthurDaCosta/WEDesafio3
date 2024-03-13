@@ -33,14 +33,22 @@
                             <h3><?= $produto['dscproduto'] ?></h3>
                             <p>Preço: R$ <?= number_format($produto['preco'], 2) ?></p>
                             <div id="caixaquantidade">
-                                <form id="formulario" method="GET" action="{{ route('carrinho.update') }}">
+                                <form id="formulario" method="POST" action="{{ route('carrinho.update') }}">
+                                    @method('PUT')
                                     @csrf
                                     <input type="hidden" name="idproduto" value="<?= $produto['idproduto'] ?>">
+                                    <input type="number" name="quantidade" id="quantidadeAtual" value="<?= $produto['quantidade'] ?>" onchange="this.form.submit()">
                                     <button type="submit" name="quantidade" value="<?= ($produto['quantidade'] - 1) ?>" class="maismenos" id="menos">-</button>
-                                    <input type="text" id="quantidadeAtual" value="<?= $produto['quantidade'] ?>">
-                                    <button type="submit" name="quantidade" value="<?= ($produto['quantidade'] + 1) ?>"class="maismenos" id="mais">+</button>
+                                    <button type="submit" name="quantidade" value="<?= ($produto['quantidade'] + 1) ?>" class="maismenos" id="mais">+</button>
                                 </form>
                             </div>
+                        </div>
+                        <div id="remover">
+                            <form id="formulario" method="POST" action="{{ route('carrinho.delete') }}">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" name="idproduto" value="<?= $produto['idproduto'] ?>" class="removerProduto" id="remover">Remover do Carrinho</button>
+                            </form>
                         </div>
                     </div>
                 <?php } 
@@ -53,7 +61,7 @@
                         $total = 0;
                         if (!empty($carrinho->items)) {
                             foreach ($carrinho->items as $produto){
-                                echo '<p>'. $produto['dscproduto'] . '   x '. $produto['quantidade'] .'    Preço: R$ ' . number_format(($produto['preco'] * $produto['quantidade']), 2) . '</p>';
+                                echo '<p>'. $produto['dscproduto'] . '   x '. $produto['quantidade'] .'    Preço Unitário: R$ ' . number_format(($produto['preco'] * $produto['quantidade']), 2) . '</p>';
                                 $total += $produto['preco'] * $produto['quantidade'];
                             }
                         }

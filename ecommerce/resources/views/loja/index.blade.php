@@ -51,50 +51,62 @@
         <section id="primeira">
             <div class="caixa">
                 <?php
-                foreach ($data['resultado'] ?? [] as $produto) {
+                if (!empty($data['resultado'])) {
+                    foreach ($data['resultado'] ?? [] as $produto) {
+                        ?>
+                        <div class="produto" id="produto-<?=$produto['idproduto']?>">
+                            <div class="imagem">
+                                <img src="<?=asset($produto['imagem'])?>" alt="<?=$produto['dscproduto']?>">
+                            </div>
+                            <div class="informacoes">
+                                <h3><?= $produto['dscproduto'] ?></h3>
+                                <p>Preço: R$ <?= number_format($produto['preco'], 2) ?></p>
+                                <form id="formulario" method="POST" action="{{ route('carrinho.store') }}">
+                                    @csrf
+                                    <input type="hidden" name="idproduto" value="<?= $produto['idproduto'] ?>" />
+                                    <input type="hidden" name="imagem" value="<?= $produto['imagem'] ?>"/> 
+                                    <input type="hidden" name="dscproduto" value="<?= $produto['dscproduto'] ?>"/> 
+                                    <input type="hidden" name="preco" value="<?= $produto['preco'] ?>"/> 
+                                    <input type="hidden" name="quantidade" value="1"/>
+                                    <input type="submit" value="Add ao Carrinho +" class="botao-add-carrinho" />
+                                </form>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                } else {
                     ?>
-                    <div class="produto" id="produto-<?=$produto['idproduto']?>">
-                        <div class="imagem">
-                            <img src="<?=asset($produto['imagem'])?>" alt="<?=$produto['dscproduto']?>">
-                        </div>
-                        <div class="informacoes">
-                            <h3><?= $produto['dscproduto'] ?></h3>
-                            <p>Preço: R$ <?= number_format($produto['preco'], 2) ?></p>
-                            <form id="formulario" method="POST" action="{{ route('carrinho.store') }}">
-                                @csrf
-                                <input type="hidden" name="idproduto" value="<?= $produto['idproduto'] ?>" />
-                                <input type="hidden" name="imagem" value="<?= $produto['imagem'] ?>"/> 
-                                <input type="hidden" name="dscproduto" value="<?= $produto['dscproduto'] ?>"/> 
-                                <input type="hidden" name="preco" value="<?= $produto['preco'] ?>"/> 
-                                <input type="hidden" name="quantidade" value="1"/>
-                                <input type="submit" value="Add ao Carrinho +" class="botao-add-carrinho" />
-                            </form>
-                        </div>
-                    </div>
+                    <p>Nenhum produto encontrado</p>
                     <?php
                 }
                 ?>
             </div>
-            <div id="paginacao">
-                <form id="form" method="GET" action="{{ route('loja.index') }}">
-                    <input type="hidden" name="dscproduto" value="<?= $_GET['dscproduto'] ?? '' ?>" />
-                    <input type="hidden" name="modalidade" value="<?= $_GET['modalidade'] ?? '' ?>" />
-                    <button onclick="selectFirst()">&lt;&lt;</button>
-                    <button onclick="selectPrevious()">&lt;</button>
-                    <select name="pagina" id="pagina" onchange="submit()">
-                        <?php
-                        for ($i = 1; $i <= $data['totalPaginas']; $i++) {
-                            ?>
-                            <option value="<?= $i ?>" <?= $i == ($_GET['pagina'] ?? 1)  ? 'selected' : '' ?>><?= $i ?></option>
+            <?php if (!empty($data['resultado'])) { ?>
+                <div id="paginacao">
+                    <form id="form" method="GET" action="{{ route('loja.index') }}">
+                        <input type="hidden" name="dscproduto" value="<?= $_GET['dscproduto'] ?? '' ?>" />
+                        <input type="hidden" name="modalidade" value="<?= $_GET['modalidade'] ?? '' ?>" />
+                        <button onclick="selectFirst()">&lt;&lt;</button>
+                        <button onclick="selectPrevious()">&lt;</button>
+                        <select name="pagina" id="pagina" onchange="submit()">
                             <?php
-                        }
-                        ?>
-                    </select>
-                    <button onclick="selectNext()">&gt;</button>
-                    <button onclick="selectLast()">&gt;&gt;</button>  
-                </form>
-            </div>
-
+                            for ($i = 1; $i <= $data['totalPaginas']; $i++) {
+                                if (($_GET['pagina'] ?? 1) > $data['totalPaginas']) {
+                                    ?>
+                                    <option value="<?= $i ?>" <?= $i == $data['totalPaginas'] ? 'selected' : '' ?>><?= $i ?></option>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <option value="<?= $i ?>" <?= $i == ($_GET['pagina'] ?? 1)  ? 'selected' : '' ?>><?= $i ?></option>
+                                    <?php
+                                }
+                            } ?>               
+                        </select>
+                        <button onclick="selectNext()">&gt;</button>
+                        <button onclick="selectLast()">&gt;&gt;</button>  
+                    </form>
+                </div>
+            <?php } ?>
         </section>
 
     </main>

@@ -17,7 +17,7 @@ use App\Http\Controllers\CarrinhoController;
 */
 
 Route::get('/', function () {
-    return view('login.index');
+    return redirect()->route('loja.index');
 });
 
 Route::get('/lunar/loja', [ProdutosController::class, 'index'])->name('loja.index');
@@ -27,5 +27,5 @@ Route::get('/lunar/logout', [UserController::class, 'logout'])->name('login.logo
 Route::get('/lunar/carrinho', [CarrinhoController::class, 'index'])->name('carrinho.index');
 Route::post('/lunar/carrinho', [CarrinhoController::class, 'store'])->name('carrinho.store');
 Route::put('/lunar/carrinho', [CarrinhoController::class, 'update'])->name('carrinho.update');
-Route::delete('/lunar/carrinho/id', [CarrinhoController::class, 'delete'])->name('carrinho.delete');
+Route::delete('/lunar/carrinho', [CarrinhoController::class, 'delete'])->name('carrinho.delete');
 Route::get('/lunar/carrinho/clear', [CarrinhoController::class, 'clear'])->name('carrinho.clear'); 

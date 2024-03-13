@@ -88,24 +88,30 @@ class CarrinhoController extends Controller
             return redirect()->route('login.index');
         }
 
+        $request->validate([
+            'idproduto' => 'required',
+            'quantidade' => 'required|numeric|min:1'
+        ]);
+
         $id = $request->idproduto;
 
         try {
             $carrinho = DB::table('carrinhoPessoa')->where('idpessoa', session('loggedIn'))->first();
             $carrinho->items = json_decode($carrinho->items, true);
+
             foreach($carrinho->items as &$item) {
-                if($item->idproduto == $id) {
-                    var_dump($request->put('quantidade'));
-                    $item->quantidade = $request->quantidade;
+                if($item['idproduto'] == $id) {
+                    $item['quantidade'] = $request->quantidade;
                 }
             }
+            
             $carrinho->items = json_encode($carrinho->items);
-            $carrinho->save();
+            DB::table('carrinhoPessoa')->where('idpessoa', session('loggedIn'))->update(['items' => $carrinho->items]);
         } catch (\Exception $e) {
-            //return view('error', ['error' => $e->getMessage()]);
+            return view('error', ['error' => $e->getMessage()]);
         }
     
-        //return redirect()->route('carrinho.index');
+        return redirect()->route('carrinho.index');
     }
 
     public function delete(Request $request)
@@ -119,15 +125,14 @@ class CarrinhoController extends Controller
         ]);
 
         $id = $request->idproduto;
-
         try {
             $carrinho = DB::table('carrinhoPessoa')->where('idpessoa', session('loggedIn'))->first();
             $carrinho->items = json_decode($carrinho->items, true);
             $carrinho->items = array_filter($carrinho->items, function($item) use ($id) {
-                return $item->idproduto != $id;
+                return $item['idproduto'] != $id;
             });
             $carrinho->items = json_encode($carrinho->items);
-            $carrinho->save();
+            DB::table('carrinhoPessoa')->where('idpessoa', session('loggedIn'))->update(['items' => $carrinho->items]);
         } catch (\Exception $e) {
             return view('error', ['error' => $e->getMessage()]);
         }
