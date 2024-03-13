@@ -88,7 +88,7 @@ class CarrinhoController extends Controller
             return redirect()->route('login.index');
         }
 
-        $id = $request->put('idproduto');
+        $id = $request->idproduto;
 
         try {
             $carrinho = DB::table('carrinhoPessoa')->where('idpessoa', session('loggedIn'))->first();
@@ -96,7 +96,7 @@ class CarrinhoController extends Controller
             foreach($carrinho->items as &$item) {
                 if($item->idproduto == $id) {
                     var_dump($request->put('quantidade'));
-                    $item->quantidade = $request->put('quantidade');
+                    $item->quantidade = $request->quantidade;
                 }
             }
             $carrinho->items = json_encode($carrinho->items);

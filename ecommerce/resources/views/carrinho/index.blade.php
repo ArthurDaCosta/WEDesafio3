@@ -33,19 +33,19 @@
                             <h3><?= $produto['dscproduto'] ?></h3>
                             <p>Preço: R$ <?= number_format($produto['preco'], 2) ?></p>
                             <div id="caixaquantidade">
-                                <form id="formulario" method="PUT" action="{{ route('carrinho.update') }}">
+                                <form id="formulario" method="GET" action="{{ route('carrinho.update') }}">
                                     @csrf
                                     <input type="hidden" name="idproduto" value="<?= $produto['idproduto'] ?>">
-                                    <button type="submit" value="<?= $produto['quantidade'] - 1 ?>" class="maismenos" id="menos">-</button>
+                                    <button type="submit" name="quantidade" value="<?= ($produto['quantidade'] - 1) ?>" class="maismenos" id="menos">-</button>
                                     <input type="text" id="quantidadeAtual" value="<?= $produto['quantidade'] ?>">
-                                    <button type="submit" value="<?= $produto['quantidade'] + 1 ?>"class="maismenos" id="mais">+</button>
+                                    <button type="submit" name="quantidade" value="<?= ($produto['quantidade'] + 1) ?>"class="maismenos" id="mais">+</button>
                                 </form>
                             </div>
                         </div>
                     </div>
                 <?php } 
                 } ?>
-                
+
             </div>
             <div class="caixaPagamento">
                 <div id="listagem">
