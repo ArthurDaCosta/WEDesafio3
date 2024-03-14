@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCarrinhoPessoaTable extends Migration
+class CreateCarrinhoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,8 @@ class CreateCarrinhoPessoaTable extends Migration
      */
     public function up()
     {
-        Schema::create('carrinhoPessoa', function (Blueprint $table) {
+        Schema::create('Carrinho', function (Blueprint $table) {
+            $table->id();
             $table->string('idpessoa');
             $table->text('items');
             $table->timestamps();
@@ -27,6 +28,6 @@ class CreateCarrinhoPessoaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carrinhoPessoa');
+        Schema::dropIfExists('Carrinho');
     }
 }
