@@ -45,7 +45,6 @@ class CarrinhoController extends Controller
             'dscproduto' => $request->dscproduto,
             'quantidade' => $request->quantidade,
             'preco' => $request->preco
-
         ]);
 
         try {
@@ -70,7 +69,7 @@ class CarrinhoController extends Controller
                 }
             } else {
                 $produtos[] = $produto;
-            } 
+            }
             
             $carrinho->items = $produtos;
             $carrinho->save();
@@ -92,8 +91,6 @@ class CarrinhoController extends Controller
             'quantidade' => 'required|numeric|min:1'
         ]);
 
-        $id = $request->idproduto;
-
         try {
             $carrinho = Carrinho::where('idpessoa', session('loggedIn'))->first();
 
@@ -103,7 +100,7 @@ class CarrinhoController extends Controller
 
             $produtos = $carrinho->items;
             foreach($produtos as &$item) {
-                if($item['idproduto'] == $id) {
+                if($item['idproduto'] == $request->idproduto) {
                     $item['quantidade'] = $request->quantidade;
                 }
             }

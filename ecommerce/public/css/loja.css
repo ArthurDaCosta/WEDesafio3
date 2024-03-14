@@ -7,6 +7,16 @@
 }
 /*---------------------------------------------------------------------------------------------*/
 
+#primeira{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: black;
+    justify-content: center;
+    background-image: url('https://s3.1app.com.br/master/project_5945/5eEsy3Ca9FXh06oK7e7qvnzT71DkOdL1.jpg');
+    background-size: contain;
+}
+
 #mensagemNaoEncontrado{
     color: white;
     text-align: center; 
@@ -16,113 +26,87 @@
 
 #cabeca{
     display: flex;
-   
-    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
     height: 12vh;
     background-image: url('https://tm.ibxk.com.br/2016/02/15/15191853192732.jpg?ims=1280x480');
     background-size: cover;
-    position: relative;
+    border:1px solid rgb(0, 255, 229);
 }
 
 #lojaLink{
+    float: left;
     height: 100%;
+    padding-right: 27vw;
 }
 
 #logoacabeca{
     height: 100%;
 }
 
-#alinhadireita{
+#pesquisa {
     display: flex;
     align-items: center;
     justify-content: center;
-    justify-content: flex-end;
-
-   
-    width: 70%;
-    
-    
 }
+
 #caixa-pesquisa {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-left: 1.6vw;
+    margin-right: 15vw;
 
-    padding: 0.4%;
+    padding: 1vh;
     border-radius: 1vh;
-    
- 
-    min-height: 35%;
     
     background: -webkit-gradient(linear, left top, right top, color-stop(5%, #110c5e), color-stop(56%, #1c9fff), to(#cbf6ff));
     background: -o-linear-gradient(60deg, #110c5e 5%, #1c9fff 56%, #cbf6ff);
-
-    box-shadow: 0px 0px 50px 10px #029aff86;
-
 
     background: linear-gradient(30deg, #110c5e 5%, #1c9fff 66%, #cbf6ff);
     background-size: 100% 100%; 
 }
 
+#texto-pesquisa {
+    border-radius: 1vh;
+    width: 100%;
+    font-size: 2vh;
+    color: black;
+}
+
+input[type="text"] {
+    padding-left: 10px;
+}
+
 
 #lupa {
-    
     border: none;
     background: none;
     padding: 0; 
     cursor: pointer;
-    
 }
 
 #caixaLogin{
     display: flex;
     flex-direction: column;
-    padding: 1%;
- 
+    margin-right: 10vw;
+    width: 10vw;
+    text-wrap: nowrap;
 }
+
+p{
+    font-size: 1.6vh; 
+    color: white;
+}
+
 #bemVindo{
     color: white;
 }
-.botao{
-    
+
+#botao-login{
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
     color: white;
-    background: -webkit-gradient(linear, left top, right top, color-stop(5%, #110c5e), color-stop(56%, #1c9fff), to(#cbf6ff));
-    background: -o-linear-gradient(60deg, #110c5e 5%, #1c9fff 56%, #cbf6ff);
-
-    box-shadow: 0px 0px 50px 10px #029aff86;
-
-
-    background: linear-gradient(30deg, #110c5e 5%, #1c9fff 66%, #cbf6ff);
-    background-size: 100% 100%; 
-
-}
-.botao:hover {
-    transform: scale(1.1);
-}
-
-#carrinhoLink {
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
-    height: 100%;
-    width: 7vw;
-  
-}
-
-#imagemcarrinho {
-    height: 85%;
-    border-radius: 1vh;
-    width: auto;
-    max-width: 100%;
-    max-height: 100%;
-}
-#imagemcarrinho:hover {
-    transform: scale(1.1);
-}
-#botao-menu{
-    margin-right: auto;
-    margin-left: auto;
-    color: white;
+    height: 50%;
     font-size: 3vh;
     padding: 1vh;
     border:1px solid #1c9fff;
@@ -134,80 +118,145 @@
     background: -webkit-gradient(linear, left top, right top, color-stop(5%, #110c5e), color-stop(56%, #1c9fff), to(#cbf6ff));
     background: -o-linear-gradient(60deg, #110c5e 5%, #1c9fff 56%, #cbf6ff);
 
-    box-shadow: 0px 0px 50px 10px #029aff86;
+    background: linear-gradient(30deg, #110c5e 5%, #1c9fff 66%, #cbf6ff);
+    background-size: 100% 100%;
+}
 
+#botao-login:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 50px 10px #029aff86;
+}
+
+.botao{
+    text-decoration: none;
+    text-align: center ;
+    font-size: 3vh;
+    margin-top: 1.6vh;
+    padding: 0.3vh;
+    color: white;
+    background: -webkit-gradient(linear, left top, right top, color-stop(5%, #110c5e), color-stop(56%, #1c9fff), to(#cbf6ff));
+    background: -o-linear-gradient(60deg, #110c5e 5%, #1c9fff 56%, #cbf6ff);
+
+    background: linear-gradient(30deg, #110c5e 5%, #1c9fff 66%, #cbf6ff);
+    background-size: 100% 100%; 
+}
+
+#retratil{
+    border-radius: .6vh;
+    padding: 1vh;
+    margin: 1vh;
+    cursor: pointer;
+}
+
+#botao-menu{
+    display: flex;
+    color: white;
+    height: 50%;
+    font-size: 3vh;
+    padding: 1vh;
+    border:1px solid #1c9fff;
+    border-radius: .6vh;
+
+    z-index: 2;
+    cursor: pointer;
+
+    background: -webkit-gradient(linear, left top, right top, color-stop(5%, #110c5e), color-stop(56%, #1c9fff), to(#cbf6ff));
+    background: -o-linear-gradient(60deg, #110c5e 5%, #1c9fff 56%, #cbf6ff);
 
     background: linear-gradient(30deg, #110c5e 5%, #1c9fff 66%, #cbf6ff);
     background-size: 100% 100%;
-
 }
+
+.botao:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 50px 10px #029aff86;
+}
+
+#carrinhoLink {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    height: 100%;
+    width: 7vw;
+}
+
+#imagemcarrinho {
+    height: 85%;
+    border-radius: 1vh;
+    width: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#imagemcarrinho:hover {
+    transform: scale(1.1);
+}
+
 #botao-menu:hover {
     transform: scale(1.1);
+    box-shadow: 0px 0px 50px 10px #029aff86;
 }
 
 #menu-retratil{
     display: flex;
     flex-direction: column;
     position: absolute;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 60%;
     z-index: 2;
-    top: 100%; /* Posiciona o menu abaixo do cabeçalho */
-    right: 0;
+    top: 12vh; /* Posiciona o menu abaixo do cabeçalho */
     padding: 5%;
     display: none;
     backdrop-filter: saturate(100%) blur(30px);
-}
-
-
-#primeira{
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: black;
-    align-items: center;
-    justify-content: center;
-    background-image: url('https://s3.1app.com.br/master/project_5945/5eEsy3Ca9FXh06oK7e7qvnzT71DkOdL1.jpg');
-    background-size: contain;
+    border: 1px solid rgb(0, 255, 208);
 }
 
 .caixa{
     display: flex;
     flex-wrap: wrap;
-
-   
+    justify-content: center;
+    min-height: 100vh;
     
-    width: 170vh;
-    margin: 2vw 2vw 2vw;
+    margin: 10vh;
+    margin-bottom: 1.6vh;
 
     background-image: linear-gradient(to bottom, rgba(0, 179, 255, 0.2), rgba(0, 0, 255, 0)); 
     backdrop-filter: saturate(0%) blur(6px);
-    
-    
 }
+
+.caixa p{
+    align-self: center;
+}
+
+
 .botao-add-carrinho {
     border: none;
     color: rgb(0, 0, 0);
-    padding: 10px 20px;
+    padding: 1vh 2vh;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 2vh;
     margin-top: 8%;
+    margin-left: 1vh;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 0.6vh;
 
     z-index: 5;
 
     background: -webkit-gradient(linear, left top, right top, color-stop(5%, #06b600), color-stop(56%, #1fff6a), to(#cbffdb));
     background: -o-linear-gradient(60deg, #06b600 5%, #1fff6a 56%, #cbffdb);
 
-    box-shadow: 5px 2px 30px 10px #48ff1b86;
-
-
     background: linear-gradient(30deg, #06b600 5%, #1fff6a 66%, #cbffdb);
     background-size: 100% 100%; 
 }
+
 .botao-add-carrinho:hover {
     transform: scale(1.05);
+    box-shadow: 0px 0px 20px 2px #00ff4c86;
 }
 
 .produto{
@@ -221,85 +270,115 @@
     border-radius: 10px;
 
     background-image: linear-gradient(to bottom, rgba(33, 182, 246, 0.3), rgba(0, 0, 255, 0)); 
-
 }
+
 .imagem{
     display: flex;
     justify-content: center;
     min-height: 60%;
     min-width: 100%;
 }
+
 .imagem img {
     max-width: 100%; 
     height: auto;
     border-radius: 10px 10px 0 0; 
-    border:1px solid rgb(255, 238, 0);
+    border-bottom: 1px solid rgb(0, 255, 208);
 }
 
 .informacoes {
-    padding: 10px;
+    padding: 1vh;
 }
 
-
-
-
-#esquerdaPrimeira{
-    display: flex;
-    border:1px solid red;
-    margin: 0px;
-    min-height: 100vh;
-    min-width: 50%;
-    align-items: center;
-    justify-content: center;
-
-}
-#caixavidro{
-    display: flex;
-    flex-direction: column;
-    font-size: 4.7vh;
-    width: 80%;
-    height: 90%;
-    border-radius: 30px;
-    align-items: center;
-    justify-content:space-around;
-    padding: 2vh 1vw 3vh;
-    
-
-    backdrop-filter: saturate(100%) blur(30px);
-}
-#direitaPrimeira{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    border:1px solid rgb(55, 0, 255);
-    margin: 0px;
-    min-height: 100vh;
-    min-width: 50%;
+.informacoes h3 {
+    font-size: 2.5vh;
+    margin-bottom: 1vh;
 }
 
+.informacoes p {
+    font-size: 2vh;
+}
 
-        @media screen and (orientation: portrait)/*----------------------------------------------ajustes mobile-------------------------------------*/
-        {
-        #primeira{ /*height:200vh;*/height: 150vh;}
-
-        .caixa{flex-direction: column;}
-
-        #caixavidro{width: 96%;}
-
-        #direitaPrimeira{min-height: 50vh;}
-        
-        .botao{}
-
-
-        }
 
 /*------------------------------------------------------*/
+
 #paginacao{
     display: flex;
     justify-content: center;
-
+    margin-bottom: 1.6vh;
 }
 
+.botao-pagina{
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    font-size: 2.5vh;
+    padding: 1.6vh;
+    border:1px solid #1c9fff;
+    border-radius: .6vh;
 
-/*---------------------------------------------------------------------------------------------*/
+    margin-bottom: 1.6vh;
+
+    background: -webkit-gradient(linear, left top, right top, color-stop(5%, #110c5e), color-stop(56%, #1c9fff), to(#cbf6ff));
+    background: -o-linear-gradient(60deg, #110c5e 5%, #1c9fff 56%, #cbf6ff);
+
+    background: linear-gradient(30deg, #110c5e 5%, #1c9fff 66%, #cbf6ff);
+    background-size: 100% 100%;
+}
+
+.botao-pagina:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 5px 2px #029aff86;
+}
+
+select option{
+    color: black;
+}
+
+/*------------------------------------------------------*/
+
+.footer{
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: saturate(100%) blur(30px);
+    width: 100%;
+    justify-content: center;
+}
+
+.footer img{
+    position: absolute;
+    width: 10%;
+    align-self: left;
+    margin-top: 1.6vh;
+    margin-left: 7%;
+}
+
+.rodape{
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+    font-size: 1vh;
+    font-weight: 500;
+    text-align: center;
+    align-items: center;
+    padding-top: 1.6vh;
+}
+
+.rodape p{
+    margin-bottom: 1.6vh;
+    max-width: 50%;
+}
+
+.politica{
+    display: flex;
+    justify-content: space-between;
+    color: #1c9fff;
+    font-size: 1.5vh;
+    font-weight: 500;
+    text-align: center;
+    padding-top: 1.6vh;
+    padding-bottom: 1.6vh;
+    padding-left: 35%;
+    padding-right: 35%;
+}

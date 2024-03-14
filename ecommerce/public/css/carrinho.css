@@ -6,9 +6,6 @@
     
 }
 /*---------------------------------------------------------------------------------------------*/
-.bloco{
-
-}
 #cabeca{
     display: flex;
     border:1px solid rgb(0, 255, 229);
@@ -32,8 +29,6 @@
 
     border:1px solid rgb(4, 126, 0);
     width: 70%;
-    
-    
 }
 #barra-pesquisa{
     margin-right: 10%;
@@ -47,27 +42,51 @@
 #bemVindo{
     color: white;
 }
-#botao-menu{
-    margin-right: 10%;
-
-}
-#menu-retratil{
-    position: absolute;
-    top: 100%; /* Posiciona o menu abaixo do cabeçalho */
-    right: 0;
-    padding: 5%;
-    display: none;
-    backdrop-filter: saturate(100%) blur(30px);
-}
-
 
 #primeira{
     display: flex;
     min-height: 100vh;
     background: black;
     justify-content: center;
+    flex-direction: column;
     background-image: url('https://s3.1app.com.br/master/project_5945/5eEsy3Ca9FXh06oK7e7qvnzT71DkOdL1.jpg');
     background-size: contain;
+}
+
+#carrinhoVazio{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin:0.5%;
+    border-radius: 10px;
+    
+    background-image: linear-gradient(to right, rgba(0, 179, 255, 0.2), rgba(0, 0, 255, 0)); 
+    backdrop-filter: saturate(0%) blur(6px);
+}
+
+#carrinhoVazio p{
+    color: white;
+    font-size: 5vh;
+}
+
+.botao{
+    text-decoration: none;
+    text-align: center ;
+    font-size: 3vh;
+    margin-top: 1.6vh;
+    padding: 0.3vh;
+    color: white;
+    background: -webkit-gradient(linear, left top, right top, color-stop(5%, #110c5e), color-stop(56%, #1c9fff), to(#cbf6ff));
+    background: -o-linear-gradient(60deg, #110c5e 5%, #1c9fff 56%, #cbf6ff);
+
+    background: linear-gradient(30deg, #110c5e 5%, #1c9fff 66%, #cbf6ff);
+    background-size: 100% 100%; 
+}
+
+.carrinho {
+    display: flex;
+    flex-direction: row;
 }
 
 .caixa{
@@ -214,21 +233,51 @@
     min-width: 50%;
 }
 
+.footer{
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: saturate(100%) blur(30px);
+    width: 100%;
+    justify-content: center;
+}
 
-        @media screen and (orientation: portrait)/*----------------------------------------------ajustes mobile-------------------------------------*/
-        {
-        #primeira{ /*height:200vh;*/height: 150vh;}
+.footer img{
+    position: absolute;
+    width: 10%;
+    align-self: left;
+    margin-top: 1.6vh;
+    margin-left: 7%;
+}
 
-        .caixa{flex-direction: column;}
+.rodape{
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+    font-size: 1vh;
+    font-weight: 500;
+    text-align: center;
+    align-items: center;
+    padding-top: 1.6vh;
+}
 
-        #caixavidro{width: 96%;}
+.rodape p{
+    margin-bottom: 1.6vh;
+    max-width: 50%;
+}
 
-        #direitaPrimeira{min-height: 50vh;}
-        
-        .botao{}
+.politica{
+    display: flex;
+    justify-content: space-between;
+    color: #1c9fff;
+    font-size: 1.5vh;
+    font-weight: 500;
+    text-align: center;
+    padding-top: 1.6vh;
+    padding-bottom: 1.6vh;
+    padding-left: 35%;
+    padding-right: 35%;
+}
 
-
-        }
 
 /*------------------------------------------------------*/
 #paginacao{

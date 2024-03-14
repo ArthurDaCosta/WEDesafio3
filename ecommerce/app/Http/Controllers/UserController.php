@@ -20,8 +20,8 @@ class UserController extends Controller
             try {
                 $response = $client->post($apiUrl, [
                     'body' => json_encode([
-                            'email' => $request->post('email'),
-                            'cpf' => $request->post('cpf')
+                            'email' => $request->email,
+                            'cpf' => $request->cpf
                     ])
                 ]);
 

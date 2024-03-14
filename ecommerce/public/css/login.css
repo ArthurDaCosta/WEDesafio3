@@ -5,7 +5,8 @@
     font-family: roboto;
     
 }
-/*---------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------*/	
+
 #primeira{
     display: flex;
     flex-direction: column;
@@ -16,14 +17,8 @@
     background-image: url('https://s3.1app.com.br/master/project_5945/5eEsy3Ca9FXh06oK7e7qvnzT71DkOdL1.jpg');
     background-size: contain;
 }
-.caixa{
-    display: flex;
-    /*border:1px solid rgb(81, 255, 0); */
-    height: 100%;
-    width: 170vh;
-    
-}
-#esquerdaPrimeira {
+
+#caixaLogin {
     display: flex;
     /*border: 1px solid red; */
     margin: 0 auto; 
@@ -33,6 +28,8 @@
     justify-content: center;
     flex-direction: column;
 }
+
+
 #caixavidro{
     display: flex;
     flex-direction: column;
@@ -51,10 +48,9 @@
 
 #logoatras{
     /*border: 1px solid red; */
-    width: 30%;
-    max-height: 30%;
-    margin-bottom: 30px;
+    width: 100%;
 }
+
 #textoa{
     color: #fff;
     font-size: 70%;
@@ -64,7 +60,6 @@
     padding-bottom: 1.6vh;
 }
 #formulario{
-    
     display: flex;
     flex-direction: column;
     width: 85%;
@@ -83,18 +78,27 @@
     border-radius:.15rem;
 }
 
+#lojaLink{
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    max-height: 30%;
+    margin-bottom: 30px;
+}
+
 .cadastrese{
     color: #1839de;
     font-size: 2vh;
     font-weight: 500;
     align-self: center;
-    margin-bottom: 1.6vh;
+    text-align: center;
     margin-top: 1.6vh;
+    width: 85%;
 }
 
 .separator{
     border: 1px solid #1839de;
-    width: 100%;
+    width: 85%;
     height: 1px;
 }
 
@@ -108,8 +112,10 @@
     color: #1839de;
     font-size: 2vh;
     font-weight: 500;
-    align-self: flex-end;
+    align-self: center;
+    text-align: end;
     margin-bottom: 1.6vh;
+    width: 85%;
 }
 
 .error{

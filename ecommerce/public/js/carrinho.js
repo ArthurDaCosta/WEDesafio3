@@ -7,10 +7,10 @@ primeira.addEventListener("mousemove", (e) =>{
 });
 /*--------------------------------------------------------------------------------botão menu------------------*/
 document.getElementById("botao-menu").addEventListener("click", function() {
-var menu = document.getElementById("menu-retratil");
-if (menu.style.display === "" || menu.style.display === "none") {
-menu.style.display = "block";
-} else {
-menu.style.display = "none";
-}
+    var menu = document.getElementById("menu-retratil");
+    if (menu.style.display === "" || menu.style.display === "none") {
+        menu.style.display = "block";
+    } else {
+        menu.style.display = "none";
+    }
 });
