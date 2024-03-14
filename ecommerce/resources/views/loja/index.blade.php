@@ -11,31 +11,37 @@
         <section id="cabeca">
             <a href="{{ route('loja.index') }}" id="lojaLink"><img src="{{URL::asset('/img/pngegg.png')}}" alt="logo" id="logoacabeca"></a>
             <div id="alinhadireita">
-                <div id="barra-pesquisa">
+                <div id="caixa-pesquisa">
                     <form id="formulario" method="GET" action="{{ route('loja.index') }}">
-                        <input type="hidden" name="modalidade" value="<?= $_GET['modalidade'] ?? '' ?>" />
-                        <input type="text" name="dscproduto" placeholder="Pesquisar...">
-                        <button type="submit">&#128269;</button>
+                    <input type="hidden" name="modalidade" value="<?= $_GET['modalidade'] ?? '' ?>" />
+                    <input type="text" name="dscproduto" placeholder="Pesquisar...">
+                    <button id="lupa"type="submit">&#128269;</button>
                     </form>
                 </div>
                 <div id="caixaLogin">
-                <?php
-                if (session('loggedIn')) {
-                    ?>
-                    <p id="bemVindo">Bem vindo <?= session('nome') ?> </p>
-                    <form id="formulario" method="GET" action="{{ route('login.logout') }}">
-                        <input type="submit" value="Logout" class="botao" />
-                    </form>
                     <?php
-                } else {
+                    if (session('loggedIn')) {
+                        ?>
+                        <p id="bemVindo">Bem vindo <?= session('nome') ?> </p>
+                        <form id="formulario" method="GET" action="{{ route('login.logout') }}">
+                            <input type="submit" value="Logout" class="botao" />
+                        </form>
+                        <?php
+                    } else {
+                        ?>
+                        <form id="formulario" method="GET" action="{{ route('login.login') }}">
+                            <input type="submit" value="Login" class="botao" />
+                        </form>
+                        <?php
+                    }
                     ?>
-                    <form id="formulario" method="GET" action="{{ route('login.login') }}">
-                        <input type="submit" value="Login" class="botao" />
-                    </form>
-                    <?php
-                }
-                ?>
                 </div>
+
+                <a href="{{ route('carrinho.index') }}" id="carrinhoLink">
+                    <img id="imagemcarrinho"src="{{ URL::asset('/img/carrinho.png') }}" alt="carrinho" id="botaocarrinho">
+                </a>
+
+
                 <button id="botao-menu">Categorias</button>
                 <form id="menu-retratil" method="GET" action="{{ route('loja.index') }}">
                     <ul>
@@ -56,7 +62,7 @@
                         ?>
                         <div class="produto" id="produto-<?=$produto['idproduto']?>">
                             <div class="imagem">
-                                <img src="<?=asset($produto['imagem'])?>" alt="<?=$produto['dscproduto']?>">
+                                <img src="{{ asset($produto['imagem']) }}" alt="{{ $produto['dscproduto'] }}" onerror="this.onerror=null; this.src='{{ asset('/img/pngegg.png') }}';">
                             </div>
                             <div class="informacoes">
                                 <h3><?= $produto['dscproduto'] ?></h3>
@@ -76,7 +82,7 @@
                     }
                 } else {
                     ?>
-                    <p>Nenhum produto encontrado</p>
+                    <p id="mensagemNaoEncontrado">Nenhum produto<br> encontrado</p>
                     <?php
                 }
                 ?>

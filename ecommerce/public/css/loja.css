@@ -6,12 +6,17 @@
     
 }
 /*---------------------------------------------------------------------------------------------*/
-.bloco{
+
+#mensagemNaoEncontrado{
+    color: white;
+    text-align: center; 
+    font-size: 5vw;
 
 }
+
 #cabeca{
     display: flex;
-    border:1px solid rgb(0, 255, 229);
+   
     justify-content: space-between;
     height: 12vh;
     background-image: url('https://tm.ibxk.com.br/2016/02/15/15191853192732.jpg?ims=1280x480');
@@ -33,31 +38,118 @@
     justify-content: center;
     justify-content: flex-end;
 
-    border:1px solid rgb(4, 126, 0);
+   
     width: 70%;
     
     
 }
-#barra-pesquisa{
-    margin-right: 10%;
+#caixa-pesquisa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    padding: 0.4%;
+    border-radius: 1vh;
+    
+ 
+    min-height: 35%;
+    
+    background: -webkit-gradient(linear, left top, right top, color-stop(5%, #110c5e), color-stop(56%, #1c9fff), to(#cbf6ff));
+    background: -o-linear-gradient(60deg, #110c5e 5%, #1c9fff 56%, #cbf6ff);
+
+    box-shadow: 0px 0px 50px 10px #029aff86;
+
+
+    background: linear-gradient(30deg, #110c5e 5%, #1c9fff 66%, #cbf6ff);
+    background-size: 100% 100%; 
 }
+
+
+#lupa {
+    
+    border: none;
+    background: none;
+    padding: 0; 
+    cursor: pointer;
+    
+}
+
 #caixaLogin{
     display: flex;
     flex-direction: column;
     padding: 1%;
+ 
 }
 #bemVindo{
     color: white;
 }
-#botao-menu{
-    margin-right: 10%;
+.botao{
+    
+    color: white;
+    background: -webkit-gradient(linear, left top, right top, color-stop(5%, #110c5e), color-stop(56%, #1c9fff), to(#cbf6ff));
+    background: -o-linear-gradient(60deg, #110c5e 5%, #1c9fff 56%, #cbf6ff);
+
+    box-shadow: 0px 0px 50px 10px #029aff86;
+
+
+    background: linear-gradient(30deg, #110c5e 5%, #1c9fff 66%, #cbf6ff);
+    background-size: 100% 100%; 
 
 }
+.botao:hover {
+    transform: scale(1.1);
+}
+
+#carrinhoLink {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    height: 100%;
+    width: 7vw;
+  
+}
+
+#imagemcarrinho {
+    height: 85%;
+    border-radius: 1vh;
+    width: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+#imagemcarrinho:hover {
+    transform: scale(1.1);
+}
+#botao-menu{
+    margin-right: auto;
+    margin-left: auto;
+    color: white;
+    font-size: 3vh;
+    padding: 1vh;
+    border:1px solid #1c9fff;
+    border-radius: .6vh;
+
+    z-index: 2;
+    cursor: pointer;
+
+    background: -webkit-gradient(linear, left top, right top, color-stop(5%, #110c5e), color-stop(56%, #1c9fff), to(#cbf6ff));
+    background: -o-linear-gradient(60deg, #110c5e 5%, #1c9fff 56%, #cbf6ff);
+
+    box-shadow: 0px 0px 50px 10px #029aff86;
+
+
+    background: linear-gradient(30deg, #110c5e 5%, #1c9fff 66%, #cbf6ff);
+    background-size: 100% 100%;
+
+}
+#botao-menu:hover {
+    transform: scale(1.1);
+}
+
 #menu-retratil{
     display: flex;
     flex-direction: column;
     position: absolute;
+    z-index: 2;
     top: 100%; /* Posiciona o menu abaixo do cabeçalho */
     right: 0;
     padding: 5%;
@@ -81,24 +173,55 @@
     display: flex;
     flex-wrap: wrap;
 
-    border:1px solid rgb(81, 255, 0);
+   
     
     width: 170vh;
     margin: 2vw 2vw 2vw;
+
+    background-image: linear-gradient(to bottom, rgba(0, 179, 255, 0.2), rgba(0, 0, 255, 0)); 
+    backdrop-filter: saturate(0%) blur(6px);
     
     
 }
+.botao-add-carrinho {
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 8%;
+    cursor: pointer;
+    border-radius: 5px;
+
+    z-index: 5;
+
+    background: -webkit-gradient(linear, left top, right top, color-stop(5%, #06b600), color-stop(56%, #1fff6a), to(#cbffdb));
+    background: -o-linear-gradient(60deg, #06b600 5%, #1fff6a 56%, #cbffdb);
+
+    box-shadow: 5px 2px 30px 10px #48ff1b86;
+
+
+    background: linear-gradient(30deg, #06b600 5%, #1fff6a 66%, #cbffdb);
+    background-size: 100% 100%; 
+}
+.botao-add-carrinho:hover {
+    transform: scale(1.05);
+}
+
 .produto{
     display: flex;
     flex-direction: column;
-    border:1px solid rgb(81, 255, 0);
+    border:1px solid rgb(0, 255, 208);
+    color: white;
     width: 19%;
     height: 24vw; 
     margin:0.5%;
     border-radius: 10px;
 
-    
-    background-color: #1900ff;
+    background-image: linear-gradient(to bottom, rgba(33, 182, 246, 0.3), rgba(0, 0, 255, 0)); 
+
 }
 .imagem{
     display: flex;
@@ -117,19 +240,7 @@
     padding: 10px;
 }
 
-.botao-add-carrinho {
-    background-color: #4CAF50; 
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-top: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-}
+
 
 
 #esquerdaPrimeira{
