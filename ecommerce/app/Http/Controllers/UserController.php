@@ -49,7 +49,7 @@ class UserController extends Controller
             return redirect()->route('login.index');
         }
 
-        session()->forget('loggedIn', 'nome');
+        session()->forget(['loggedIn', 'nome']);
 
         return redirect()->route('loja.index');
     }
