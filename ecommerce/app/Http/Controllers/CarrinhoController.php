@@ -10,6 +10,8 @@ class CarrinhoController extends Controller
 {
     public function index()
     {
+        if(!session()->has('loggedIn')) 
+            return redirect()->route('login.index');
         
 
         try {
@@ -18,18 +20,18 @@ class CarrinhoController extends Controller
             return view('error', ['error' => $e->getMessage()]);
         }
 
-        if(!$carrinho) {
+        if(!$carrinho) 
             return view('carrinho.index', ['carrinho' => null]);
-        }
+        
 
         return view('carrinho.index', compact('carrinho'));
     }
 
     public function store(Request $request)
     {
-        if(!session()->has('loggedIn')) {
+        if(!session()->has('loggedIn')) 
             return redirect()->route('login.index');
-        }
+        
 
         $request->validate([
             'idproduto' => 'required',
@@ -80,9 +82,9 @@ class CarrinhoController extends Controller
 
     public function update(Request $request)
     {
-        if(!session()->has('loggedIn')) {
+        if(!session()->has('loggedIn')) 
             return redirect()->route('login.index');
-        }
+        
 
         $request->validate([
             'idproduto' => 'required',
@@ -97,6 +99,7 @@ class CarrinhoController extends Controller
             }
 
             $produtos = $carrinho->items;
+            
             foreach($produtos as &$item) {
                 if($item['idproduto'] == $request->idproduto) {
                     $item['quantidade'] = $request->quantidade;
@@ -114,9 +117,9 @@ class CarrinhoController extends Controller
 
     public function delete(Request $request)
     {
-        if(!session()->has('loggedIn')) {
+        if(!session()->has('loggedIn')) 
             return redirect()->route('login.index');
-        }
+        
 
         $request->validate([
             'idproduto' => 'required'
@@ -145,9 +148,9 @@ class CarrinhoController extends Controller
 
     public function clear()
     {
-        if(!session()->has('loggedIn')) {
+        if(!session()->has('loggedIn')) 
             return redirect()->route('login.index');
-        }
+        
 
         try {
             if(Carrinho::where('idpessoa', session('loggedIn'))->exists()) {

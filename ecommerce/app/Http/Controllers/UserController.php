@@ -8,9 +8,9 @@ class UserController extends Controller
 {
     public function login(Request $request)
     {
-        if(session()->has('loggedIn')) {
+        if(session()->has('loggedIn')) 
             return redirect()->route('loja.index');
-        }
+        
 
         if($request->isMethod('post')) {
             $client = new Client();
@@ -45,9 +45,9 @@ class UserController extends Controller
 
     public function logout()
     {
-        if(!session()->has('loggedIn')) {
+        if(!session()->has('loggedIn')) 
             return redirect()->route('login.index');
-        }
+        
 
         session()->forget(['loggedIn', 'nome']);
 

@@ -63,7 +63,7 @@
                         if (!empty($carrinho->items)) {
                             echo "<div id='listagem'>";
                             foreach ($carrinho->items as $produto){
-                                echo '<p>'. $produto['dscproduto'] . '   x '. $produto['quantidade'] .'   <br> Preço Unitário: R$ ' . number_format(($produto['preco'] * $produto['quantidade']), 2) . '</p>';
+                                echo '<p>'. $produto['dscproduto'] . '   x '. $produto['quantidade'] .'   <br> Preço: R$ ' . number_format(($produto['preco'] * $produto['quantidade']), 2) . '</p>';
                                 $total += $produto['preco'] * $produto['quantidade'];
                             }
                             echo "</div>";
