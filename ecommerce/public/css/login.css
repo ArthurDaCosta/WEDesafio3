@@ -20,7 +20,6 @@
 
 #caixaLogin {
     display: flex;
-    /*border: 1px solid red; */
     margin: 0 auto; 
     min-height: 100vh;
     min-width: 50%;
@@ -47,7 +46,6 @@
 }
 
 #logoatras{
-    /*border: 1px solid red; */
     width: 100%;
 }
 
