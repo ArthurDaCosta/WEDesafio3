@@ -10,9 +10,7 @@ class CarrinhoController extends Controller
 {
     public function index()
     {
-        if(!session()->has('loggedIn')) {
-            return redirect()->route('login.index');
-        }
+        
 
         try {
             $carrinho = Carrinho::where('idpessoa', session('loggedIn'))->first();
