@@ -77,7 +77,9 @@
                 }
             } else {
                 ?>
-                <p id="mensagemNaoEncontrado">Nenhum produto<br> encontrado</p>
+                <div class="erro">
+                    <p id="mensagemNaoEncontrado">Nenhum produto encontrado</p>
+                </div>
                 <?php
             }
             ?>

@@ -124,7 +124,8 @@ p{
 
 #botao-login:hover {
     transform: scale(1.1);
-    box-shadow: 0px 0px 50px 10px #029aff86;
+    animation: pulse 1.5s infinite;
+    -webkit-animation: pulse 1.5s infinite;
 }
 
 .botao{
@@ -169,7 +170,8 @@ p{
 
 .botao:hover {
     transform: scale(1.1);
-    box-shadow: 0px 0px 50px 10px #029aff86;
+    animation: pulse 1.5s infinite;
+    -webkit-animation: pulse 1.5s infinite;
 }
 
 #carrinhoLink {
@@ -194,7 +196,8 @@ p{
 
 #botao-menu:hover {
     transform: scale(1.1);
-    box-shadow: 0px 0px 50px 10px #029aff86;
+    animation: pulse 1.5s infinite;
+    -webkit-animation: pulse 1.5s infinite;
 }
 
 #menu-retratil{
@@ -214,10 +217,11 @@ p{
     border: 1px solid rgb(0, 255, 208);
 }
 
+/*------------------------------------------------------*/
+
 .caixa{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     min-height: 100vh;
     
     margin: 10vh;
@@ -227,10 +231,17 @@ p{
     backdrop-filter: saturate(0%) blur(6px);
 }
 
-.caixa p{
-    align-self: center;
+.erro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10vh;
+    margin-bottom: 1.6vh;
+    color: white;
+    font-size: 5vh;
+    width: 100%;
 }
-
 
 .botao-add-carrinho {
     border: none;
@@ -328,8 +339,9 @@ p{
 }
 
 .botao-pagina:hover{
-    transform: scale(1.1);
-    box-shadow: 0px 0px 5px 2px #029aff86;
+    transform: scale(1.05);
+    animation: pulse 1.5s infinite;
+    -webkit-animation: pulse 1.5s infinite;
 }
 
 select option{
@@ -382,3 +394,30 @@ select option{
     padding-left: 35%;
     padding-right: 35%;
 }
+
+/*------------------------------------------------------*/
+
+@-webkit-keyframes pulse { 
+    0% {
+      -webkit-box-shadow: 0 0 0 0 rgba(2, 141, 255, 0.7);
+    }
+    70% {
+        -webkit-box-shadow: 0 0 0 1.5vh rgba(61,149,214, 0);
+    }
+    100% {
+        -webkit-box-shadow: 0 0 0 0 rgba(61,149,214, 0);
+    }
+  }
+@keyframes pulse {
+    0% {
+      -moz-box-shadow: 0 0 0 0 rgba(2, 141, 255, 0.7);
+      box-shadow: 0 0 0 0 rgba(2, 141, 255, 0.7);
+    }
+    70% {
+        -moz-box-shadow: 0 0 0 1.5vh rgba(61,149,214, 0);
+        box-shadow: 0 0 0 1.5vh rgba(61,149,214, 0);
+    }
+    100% {
+        -moz-box-shadow: 0 0 0 0 rgba(61,149,214, 0);
+        box-shadow: 0 0 0 0 rgba(61,149,214, 0);
+}}

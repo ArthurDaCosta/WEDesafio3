@@ -12,10 +12,8 @@
         <a href="{{ route('loja.index') }}" id="lojaLink"><img src="{{URL::asset('/img/pngegg.png')}}" alt="logo" id="logoacabeca"></a>            
         <div id="alinhadireita">
             <div id="caixaLogin">
-                <p id="bemVindo">Bem vindo <?= session('nome') ?></p>
-                <form id="formulario" method="GET" action="{{ route('login.logout') }}">
-                    <button type="submit" class="botao">Logout</button>
-                </form>
+                <p id="bemVindo">Bem vindo <?= session('nome') ?>!</p>
+                <a href="{{ route('login.logout') }}" class="botao">Logout</a>
             </div>
         </div>
     </header>
@@ -26,11 +24,13 @@
                     foreach ($carrinho->items as $produto) { ?>
                     <div class="produto" id="produto-' . $produto['id'] . '">
                         <div class="imagem">
-                            <img src="<?= $produto['imagem'] ?>" alt="<?=$produto['dscproduto']?>">
+                            <img src="<?= $produto['imagem'] ?>" alt="<?=$produto['dscproduto']?>" onerror="this.onerror=null; this.src='{{ asset('/img/pngegg.png') }}';">
+                        </div>
+                        <div class='vertical-separator'>
                         </div>
                         <div class="informacoes">
                             <h3><?= $produto['dscproduto'] ?></h3>
-                            <p>Preço: R$ <?= number_format($produto['preco'], 2) ?></p>
+                            <p>Preço Unitário: R$ <?= number_format($produto['preco'], 2) ?></p>
                             <div id="caixaquantidade">
                                 <form id="formulario" method="POST" action="{{ route('carrinho.update') }}">
                                     @method('PUT')
@@ -46,7 +46,7 @@
                             <form id="formulario" method="POST" action="{{ route('carrinho.delete') }}">
                                 @method('DELETE')
                                 @csrf
-                                <button type="submit" name="idproduto" value="<?= $produto['idproduto'] ?>" class="removerProduto" id="remover">Remover do Carrinho</button>
+                                <button type="submit" name="idproduto" value="<?= $produto['idproduto'] ?>" class="removerProduto">Remover do Carrinho</button>
                             </form>
                         </div>
                     </div>
@@ -58,17 +58,17 @@
                 <?php } ?>
             </div>
             <div class="caixaPagamento">
-                <div id="listagem">
                     <?php 
                         $total = 0;
                         if (!empty($carrinho->items)) {
+                            echo "<div id='listagem'>";
                             foreach ($carrinho->items as $produto){
-                                echo '<p>'. $produto['dscproduto'] . '   x '. $produto['quantidade'] .'    Preço Unitário: R$ ' . number_format(($produto['preco'] * $produto['quantidade']), 2) . '</p>';
+                                echo '<p>'. $produto['dscproduto'] . '   x '. $produto['quantidade'] .'   <br> Preço Unitário: R$ ' . number_format(($produto['preco'] * $produto['quantidade']), 2) . '</p>';
                                 $total += $produto['preco'] * $produto['quantidade'];
                             }
+                            echo "</div>";
                         }
                     ?>
-                </div>
                 <?php if (!empty($carrinho->items)) { ?>
                     <div id="total">
                         <?php

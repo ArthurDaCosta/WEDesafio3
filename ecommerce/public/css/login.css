@@ -219,16 +219,3 @@
       box-shadow: 0 0 0 0 rgba(61,149,214, 0);
   }
 }
-
-/*----------------------------------------------ajustes mobile-------------------------------------*/
-/* @media screen and (orientation: portrait) {
-    #primeira{ height:200vh;height: 150vh;}
-
-    .caixa{flex-direction: column;}
-
-    #caixavidro{width: 96%;}
-
-    #direitaPrimeira{min-height: 50vh;}
-
-    .botao{}
-} */
